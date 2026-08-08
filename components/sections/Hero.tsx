@@ -240,8 +240,15 @@ export default function Hero() {
           borderTop: "1px solid rgba(212,175,55,0.25)",
         }}
       >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            padding: "0 32px",
+          }}
+        >
           <div
+            className="trust-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",
@@ -257,6 +264,7 @@ export default function Hero() {
                   display: "flex",
                   flexDirection: "column",
                   gap: 4,
+                  minWidth: 0,
                 }}
               >
                 <div
@@ -270,6 +278,7 @@ export default function Hero() {
                 >
                   {item.stat}
                 </div>
+
                 <div
                   style={{
                     fontSize: 12,
@@ -277,6 +286,7 @@ export default function Hero() {
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     fontWeight: 500,
+                    lineHeight: 1.5,
                   }}
                 >
                   {item.label}
@@ -287,11 +297,28 @@ export default function Hero() {
         </div>
       </div>
 
-      <style>{`
+      {/* <style>{`
         @media (max-width: 640px) {
           [data-trust-grid] { grid-template-columns: repeat(2, 1fr) !important; }
         }
-      `}</style>
+      `}</style> */}
+      <style>{`
+    @media (max-width: 900px) {
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .trust-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .trust-grid > div {
+        padding: 22px 20px !important;
+      }
+    }
+  `}</style>
     </section>
   );
 }
