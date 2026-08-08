@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useInView } from "./useInView";
 import { FaFacebookF } from "react-icons/fa";
 
 const navCols = [

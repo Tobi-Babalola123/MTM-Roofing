@@ -1,7 +1,5 @@
 "use client";
 
-import { useInView } from "./useInView";
-
 const steps = [
   {
     num: "01",
@@ -113,8 +111,6 @@ const steps = [
 ];
 
 export default function Process() {
-  const ref = useInView(0.1);
-
   return (
     <section
       id="process"
@@ -166,7 +162,6 @@ export default function Process() {
 
         {/* Steps */}
         <div
-          ref={ref}
           className="steps-grid"
           style={{
             display: "grid",
@@ -193,7 +188,6 @@ export default function Process() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className={`step-card in-view in-view-delay-${i + 1}`}
               style={{
                 padding: "0 16px",
                 position: "relative",

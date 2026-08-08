@@ -1,12 +1,11 @@
 "use client";
-
-import { useInView } from "./useInView";
+import Image from "next/image";
 
 const services = [
   {
     title: "Commercial Flat Roofing",
     desc: "TPO, EPDM, and modified bitumen systems engineered for Alberta's freeze-thaw cycles and extreme temperature swings.",
-    img: "https://images.unsplash.com/photo-1770075370139-1277d3a37b89?w=600&h=400&fit=crop&auto=format",
+    img: "/images/commercial.webp",
     alt: "Commercial flat roof with HVAC units",
   },
   {
@@ -41,10 +40,115 @@ const services = [
   },
 ];
 
-export default function Services() {
-  const titleRef = useInView();
-  const gridRef = useInView(0.05);
+function ServiceCard({ s }: { s: (typeof services)[number] }) {
+  return (
+    <div
+      style={{
+        background: "#fff",
+        border: "1px solid #E8EAEE",
+        overflow: "hidden",
+        borderRadius: 24,
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-4px)";
+        e.currentTarget.style.boxShadow = "0 12px 40px rgba(18,59,114,0.12)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
+    >
+      {/* Image */}
+      <div
+        style={{
+          height: 220,
+          overflow: "hidden",
+          background: "#0d2b55",
+          position: "relative",
+        }}
+      >
+        <Image
+          src={s.img}
+          alt={s.alt}
+          fill
+          loading="lazy"
+          decoding="async"
+          style={{
+            objectFit: "cover",
+          }}
+        />
 
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(18,59,114,0.3) 0%, transparent 60%)",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
+
+      {/* Content */}
+      <div style={{ padding: "24px 24px 28px" }}>
+        <h3
+          style={{
+            fontSize: 22,
+            fontWeight: 700,
+            color: "#123B72",
+            textTransform: "uppercase",
+            letterSpacing: "0.02em",
+            marginBottom: 10,
+          }}
+        >
+          {s.title}
+        </h3>
+
+        <p
+          style={{
+            fontSize: 14,
+            color: "#666",
+            lineHeight: 1.7,
+            marginBottom: 20,
+          }}
+        >
+          {s.desc}
+        </p>
+
+        <a
+          href="#contact"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            fontSize: 12,
+            fontWeight: 600,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "#123B72",
+            textDecoration: "none",
+            borderBottom: "1.5px solid #D4AF37",
+            paddingBottom: 2,
+          }}
+        >
+          Learn More
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path
+              d="M2 6h8M7 3l3 3-3 3"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+export default function Services() {
   return (
     <section
       id="services"
@@ -52,9 +156,8 @@ export default function Services() {
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
         {/* Header */}
-        <div ref={titleRef} style={{ marginBottom: 64, maxWidth: 640 }}>
+        <div style={{ marginBottom: 64, maxWidth: 640 }}>
           <div
-            className="in-view"
             style={{
               display: "flex",
               alignItems: "center",
@@ -76,7 +179,6 @@ export default function Services() {
             </span>
           </div>
           <h2
-            className="in-view in-view-delay-1"
             style={{
               fontSize: "clamp(36px, 4.5vw, 60px)",
               fontWeight: 800,
@@ -92,7 +194,6 @@ export default function Services() {
             Roofing Services
           </h2>
           <p
-            className="in-view in-view-delay-2"
             style={{
               fontSize: 15,
               color: "#666",
@@ -107,8 +208,8 @@ export default function Services() {
         </div>
 
         {/* Grid */}
+        {/* Grid */}
         <div
-          ref={gridRef}
           className="services-grid"
           style={{
             display: "grid",
@@ -117,139 +218,27 @@ export default function Services() {
           }}
         >
           {services.map((s, i) => (
-            <div
-              key={i}
-              className={`in-view in-view-delay-${Math.min(i + 1, 5)} img-zoom`}
-              style={{
-                background: "#fff",
-                border: "1px solid #E8EAEE",
-                overflow: "hidden",
-                borderRadius: 24,
-
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform =
-                  "translateY(-4px)";
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 12px 40px rgba(18,59,114,0.12)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform =
-                  "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-              }}
-            >
-              <div
-                style={{
-                  height: 220,
-                  overflow: "hidden",
-                  background: "#0d2b55",
-                  position: "relative",
-                }}
-              >
-                <img
-                  src={s.img}
-                  alt={s.alt}
-                  className="zoom-target"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(to top, rgba(18,59,114,0.3) 0%, transparent 60%)",
-                  }}
-                />
-              </div>
-              <div style={{ padding: "24px 24px 28px" }}>
-                <h3
-                  style={{
-                    fontSize: 22,
-                    fontWeight: 700,
-                    color: "#123B72",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.02em",
-                    marginBottom: 10,
-                  }}
-                >
-                  {s.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: 14,
-                    color: "#666",
-                    lineHeight: 1.7,
-                    marginBottom: 20,
-                  }}
-                >
-                  {s.desc}
-                </p>
-                <a
-                  href="#contact"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 12,
-                    fontWeight: 600,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "#123B72",
-                    textDecoration: "none",
-                    borderBottom: "1.5px solid #D4AF37",
-                    paddingBottom: 2,
-                    transition: "color 0.2s",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#D4AF37")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "#123B72")
-                  }
-                >
-                  Learn More
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path
-                      d="M2 6h8M7 3l3 3-3 3"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
+            <ServiceCard key={i} s={s} />
           ))}
         </div>
       </div>
 
       <style>{`
-  /* Desktop */
-  .services-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 
-  /* Tablet */
-  @media (max-width:900px){
-    .services-grid{
-      grid-template-columns:repeat(2,1fr) !important;
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
     }
   }
 
-  /* Mobile */
-  @media (max-width:600px){
-    .services-grid{
-      grid-template-columns:1fr !important;
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr !important;
     }
   }
 `}</style>

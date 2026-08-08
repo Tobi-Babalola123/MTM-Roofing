@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useInView } from "./useInView";
 
 const faqs = [
   {
@@ -36,7 +35,6 @@ const faqs = [
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
-  const ref = useInView(0.1);
 
   return (
     <section
@@ -86,14 +84,10 @@ export default function FAQ() {
         </div>
 
         {/* Accordion */}
-        <div
-          ref={ref}
-          style={{ display: "flex", flexDirection: "column", gap: 8 }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className={`in-view in-view-delay-${Math.min(i + 1, 5)}`}
               style={{
                 border: `1.5px solid ${open === i ? "#123B72" : "#E8EAEE"}`,
                 overflow: "hidden",

@@ -1,7 +1,5 @@
 "use client";
 
-import { useInView } from "./useInView";
-
 const testimonials = [
   {
     quote:
@@ -30,8 +28,6 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const ref = useInView(0.1);
-
   return (
     <section
       id="testimonials"
@@ -81,7 +77,6 @@ export default function Testimonials() {
 
         {/* Cards */}
         <div
-          ref={ref}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -91,7 +86,6 @@ export default function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`in-view in-view-delay-${i + 1}`}
               style={{
                 background: "#ffffff",
                 borderRadius: 24,

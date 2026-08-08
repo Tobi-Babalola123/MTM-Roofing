@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 const trustItems = [
   { stat: "20+", label: "Years Experience" },
@@ -12,15 +13,15 @@ const trustItems = [
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const handler = () => {
-      el.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
+  // useEffect(() => {
+  //   const el = ref.current;
+  //   if (!el) return;
+  //   const handler = () => {
+  //     el.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+  //   };
+  //   window.addEventListener("scroll", handler, { passive: true });
+  //   return () => window.removeEventListener("scroll", handler);
+  // }, []);
 
   return (
     <section
@@ -43,10 +44,14 @@ export default function Hero() {
             willChange: "transform",
           }}
         >
-          <img
+          <Image
             src="/images/hero.webp"
             alt="Aerial view of commercial roofing in winter conditions"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            fill
+            priority
+            style={{
+              objectFit: "cover",
+            }}
           />
         </div>
         {/* Layered overlay */}
@@ -113,7 +118,6 @@ export default function Hero() {
 
             {/* Headline */}
             <h1
-              className="animate-fade-up animate-fade-up-delay-1"
               style={{
                 fontSize: "clamp(52px, 8vw, 96px)",
                 fontWeight: 800,
@@ -133,7 +137,6 @@ export default function Hero() {
 
             {/* Subhead */}
             <p
-              className="animate-fade-up animate-fade-up-delay-2"
               style={{
                 fontSize: 17,
                 fontWeight: 300,

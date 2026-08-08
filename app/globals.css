@@ -11,49 +11,10 @@ body {
   margin: 0;
   font-family: var(--font-stack-sans-notch), Arial, sans-serif;
 }
-@keyframes marquee {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
 
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.marquee {
-  width: max-content;
-  animation: marquee 28s linear infinite;
-}
-
-.marquee:hover {
-  animation-play-state: paused;
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 28s linear infinite;
-  will-change: transform;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
-
-.ticker-track {
-  animation: marquee 30s linear infinite;
-}
-
-.ticker-track:hover {
-  animation-play-state: paused;
-}
+/* =========================================================
+   GLOBAL BASE STYLES
+   ========================================================= */
 
 @theme inline {
   --color-background: var(--background);
@@ -81,6 +42,7 @@ body {
 
   --font-sans:
     var(--font-stack-sans-notch), ui-sans-serif, system-ui, sans-serif;
+
   --font-heading:
     var(--font-stack-sans-notch), ui-sans-serif, system-ui, sans-serif;
 
@@ -95,9 +57,8 @@ body {
 :root {
   color-scheme: light;
 
-  /* Core palette */
-  --background: #f8fafc; /* light slate */
-  --foreground: #111827; /* near-black text */
+  --background: #f8fafc;
+  --foreground: #111827;
 
   --card: #ffffff;
   --card-foreground: #111827;
@@ -105,16 +66,16 @@ body {
   --popover: #ffffff;
   --popover-foreground: #111827;
 
-  --primary: #0f172a; /* dark navy */
+  --primary: #0f172a;
   --primary-foreground: #f8fafc;
 
-  --secondary: #f97316; /* construction orange */
+  --secondary: #f97316;
   --secondary-foreground: #ffffff;
 
   --muted: #eef2f7;
-  --muted-foreground: #64748b; /* steel gray */
+  --muted-foreground: #64748b;
 
-  --accent: #fdba74; /* light orange accent */
+  --accent: #fdba74;
   --accent-foreground: #0f172a;
 
   --destructive: #dc2626;
@@ -123,7 +84,6 @@ body {
   --input: #e2e8f0;
   --ring: #f97316;
 
-  /* Extra brand tokens */
   --navy: #0f172a;
   --navy-foreground: #f8fafc;
   --steel: #64748b;
@@ -136,17 +96,22 @@ body {
     @apply border-border outline-ring/50;
     box-sizing: border-box;
   }
+
   html {
-    scroll-behavior: smooth;
     max-width: 100%;
     min-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+
+    /* Removed smooth scrolling */
+    scroll-behavior: auto;
   }
+
   body {
     @apply bg-background text-foreground font-sans;
     min-height: 100dvh;
   }
+
   img,
   video,
   iframe {
@@ -154,6 +119,7 @@ body {
     height: auto;
     display: block;
   }
+
   ::selection {
     background: var(--secondary);
     color: #ffffff;

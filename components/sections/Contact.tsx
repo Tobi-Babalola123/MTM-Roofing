@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useInView } from "./useInView";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -12,7 +11,6 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const ref = useInView(0.1);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +24,6 @@ export default function Contact() {
     background: "#F7F8FA",
     fontSize: 14,
     color: "#333",
-    fontFamily: "'Inter', sans-serif",
     outline: "none",
     transition: "border-color 0.2s, background 0.2s",
     boxSizing: "border-box" as const,
@@ -52,7 +49,6 @@ export default function Contact() {
             <div style={{ width: 28, height: 2, background: "#D4AF37" }} />
             <span
               style={{
-                fontFamily: "'Barlow Condensed', sans-serif",
                 fontSize: 12,
                 fontWeight: 600,
                 letterSpacing: "0.18em",
@@ -66,7 +62,6 @@ export default function Contact() {
           </div>
           <h2
             style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
               fontSize: "clamp(36px, 4.5vw, 60px)",
               fontWeight: 800,
               textTransform: "uppercase",
@@ -81,21 +76,12 @@ export default function Contact() {
           </h2>
         </div>
 
-        <div
-          ref={ref}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
-            gap: 64,
-            alignItems: "start",
-          }}
-        >
+        <div className="contact-grid">
           {/* Contact Info */}
-          <div className="in-view">
+          <div>
             <div style={{ marginBottom: 40 }}>
               <h3
                 style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
                   fontSize: 22,
                   fontWeight: 700,
                   color: "#123B72",
@@ -200,6 +186,7 @@ export default function Contact() {
                       width: 44,
                       height: 44,
                       background: "#123B72",
+                      borderRadius: "50%",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -257,10 +244,15 @@ export default function Contact() {
             </div>
 
             {/* Trust badges */}
-            <div style={{ background: "#123B72", padding: "24px 28px" }}>
+            <div
+              style={{
+                background: "#123B72",
+                borderRadius: "24px 28px",
+                padding: "24px 28px",
+              }}
+            >
               <div
                 style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
                   fontSize: 14,
                   fontWeight: 700,
                   color: "#D4AF37",
@@ -307,10 +299,12 @@ export default function Contact() {
 
           {/* Form */}
           <div
-            className="in-view in-view-delay-2"
+            className="contact-form-card"
             style={{
               background: "#ffffff",
               padding: "40px 40px",
+              borderRadius: 20,
+              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
               border: "1px solid #E8EAEE",
             }}
           >
@@ -340,7 +334,6 @@ export default function Contact() {
                 </div>
                 <h3
                   style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
                     fontSize: 28,
                     fontWeight: 800,
                     color: "#123B72",
@@ -358,11 +351,14 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                style={{ display: "flex", flexDirection: "column", gap: 16 }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 16,
+                }}
               >
                 <h3
                   style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
                     fontSize: 22,
                     fontWeight: 700,
                     color: "#123B72",
@@ -374,13 +370,7 @@ export default function Contact() {
                   Get a Free Estimate
                 </h3>
 
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 16,
-                  }}
-                >
+                <div className="form-row">
                   <div>
                     <label
                       style={{
@@ -564,9 +554,9 @@ export default function Contact() {
                   style={{
                     background: "#D4AF37",
                     color: "#0d2b55",
-                    fontFamily: "'Barlow Condensed', sans-serif",
                     fontSize: 15,
                     fontWeight: 700,
+                    borderRadius: 8,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     padding: "16px",
@@ -605,12 +595,62 @@ export default function Contact() {
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          #contact [style*="grid-template-columns: 1fr 1.4fr"] { grid-template-columns: 1fr !important; gap: 40px !important; }
-          #contact form [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-          #contact [style*="padding: '40px 40px'"] { padding: 28px !important; }
-        }
-      `}</style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .contact-form-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #E8EAEE;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form-card {
+      padding: 28px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #contact {
+      padding: 64px 0 !important;
+    }
+
+    #contact > div {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+
+    #contact h2 {
+      font-size: clamp(32px, 10vw, 44px) !important;
+    }
+
+    .contact-form-card {
+      padding: 22px 18px;
+      border-radius: 16px;
+    }
+  }
+`}</style>
     </section>
   );
 }

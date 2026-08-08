@@ -1,7 +1,5 @@
 "use client";
 
-import { useInView } from "./useInView";
-
 const industries = [
   {
     icon: (
@@ -228,8 +226,6 @@ const industries = [
 ];
 
 export default function Industries() {
-  const ref = useInView(0.1);
-
   return (
     <section
       id="industries"
@@ -299,7 +295,6 @@ export default function Industries() {
 
         {/* Cards */}
         <div
-          ref={ref}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -309,7 +304,6 @@ export default function Industries() {
           {industries.map((ind, i) => (
             <div
               key={i}
-              className={`in-view in-view-delay-${Math.min(i + 1, 5)}`}
               style={{
                 padding: "36px 32px",
                 background: "rgba(255,255,255,0.04)",

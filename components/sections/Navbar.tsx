@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const links = [
   "Home",
@@ -37,8 +38,8 @@ export default function Navbar() {
         background: scrolled
           ? "rgba(12, 30, 56, 0.92)"
           : "rgba(18, 59, 114, 1)",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+        backdropFilter: "none",
+        WebkitBackdropFilter: "none",
         borderBottom: scrolled
           ? "1px solid rgba(212,175,55,0.2)"
           : "1px solid transparent",
@@ -71,9 +72,12 @@ export default function Navbar() {
               flexShrink: 0,
             }}
           >
-            <img
+            <Image
+              loading="lazy"
               src="/images/mtmroofing.webp"
               alt="MTM Roofing Services"
+              width={500}
+              height={120}
               style={{
                 height: "clamp(42px, 7vw, 60px)",
                 width: "auto",

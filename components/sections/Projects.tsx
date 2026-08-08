@@ -1,6 +1,5 @@
 "use client";
-
-import { useInView } from "./useInView";
+import Image from "next/image";
 
 const projects = [
   {
@@ -36,14 +35,12 @@ const projects = [
 ];
 
 export default function Projects() {
-  const ref = useInView(0.05);
-
   return (
     <section
       id="projects"
       style={{
         background: "#F7F8FA",
-        padding: "clamp(80px,8vw,120px) 0",
+        padding: "clamp(80px, 8vw, 120px) 0",
       }}
     >
       <div
@@ -54,7 +51,6 @@ export default function Projects() {
         }}
       >
         {/* Header */}
-
         <div
           style={{
             maxWidth: 760,
@@ -101,7 +97,7 @@ export default function Projects() {
 
           <h2
             style={{
-              fontSize: "clamp(36px,4vw,60px)",
+              fontSize: "clamp(36px, 4vw, 60px)",
               fontWeight: 800,
               color: "#123B72",
               textTransform: "uppercase",
@@ -126,41 +122,39 @@ export default function Projects() {
         </div>
 
         {/* Cards */}
-
         <div
-          ref={ref}
+          className="projects-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3,1fr)",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 24,
           }}
         >
-          {projects.map((item, i) => (
+          {projects.map((item) => (
             <div
               key={item.title}
-              className={`in-view in-view-delay-${Math.min(i + 1, 5)}`}
               style={{
                 background: "#fff",
                 borderRadius: 24,
                 overflow: "hidden",
                 boxShadow: "0 12px 35px rgba(0,0,0,.08)",
-                transition: ".3s",
               }}
             >
               <div
                 style={{
                   overflow: "hidden",
                   height: 250,
+                  position: "relative",
                 }}
               >
-                <img
+                <Image
                   src={item.img}
                   alt={item.title}
+                  fill
+                  loading="lazy"
+                  decoding="async"
                   style={{
-                    width: "100%",
-                    height: "100%",
                     objectFit: "cover",
-                    transition: ".5s",
                   }}
                 />
               </div>
@@ -212,23 +206,23 @@ export default function Projects() {
       </div>
 
       <style>{`
-        @media(max-width:1000px){
-          #projects [style*="repeat(3,1fr)"]{
-            grid-template-columns:repeat(2,1fr)!important;
+        @media (max-width: 1000px) {
+          .projects-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
           }
         }
 
-        @media(max-width:640px){
-          #projects{
-            padding:72px 0!important;
+        @media (max-width: 640px) {
+          #projects {
+            padding: 72px 0 !important;
           }
 
-          #projects [style*="repeat(3,1fr)"]{
-            grid-template-columns:1fr!important;
+          .projects-grid {
+            grid-template-columns: 1fr !important;
           }
 
-          #projects div[style*="padding: 28"]{
-            padding:22px!important;
+          .projects-grid > div > div:last-child {
+            padding: 22px !important;
           }
         }
       `}</style>

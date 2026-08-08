@@ -8,6 +8,7 @@ import FAQ from "@/components/sections/FAQ";
 import WhyMTM from "@/components/sections/WhyMTM";
 import Projects from "@/components/sections/Projects";
 import FinalCTA from "@/components/sections/FinalCTA";
+import Contact from "@/components/sections/Contact";
 export default function Page() {
   return (
     <>
@@ -20,10 +21,8 @@ export default function Page() {
       <Testimonials />
       <FAQ />
       <FinalCTA />
-
+      <Contact />
       <Footer />
-
-      <main></main>
     </>
   );
 }

@@ -1,13 +1,8 @@
 "use client";
 
-import { useInView } from "./useInView";
-
 export default function FinalCTA() {
-  const ref = useInView();
-
   return (
     <section
-      ref={ref}
       style={{
         position: "relative",
         overflow: "hidden",

@@ -1,6 +1,5 @@
 "use client";
-
-import { useInView } from "./useInView";
+import Image from "next/image";
 
 const checks = [
   "Certified Crews with Manufacturer Training",
@@ -12,12 +11,16 @@ const checks = [
 ];
 
 export default function WhyMTM() {
-  const leftRef = useInView();
-  const rightRef = useInView();
-
   return (
-    <section id="about" style={{ background: "#F7F8FA", overflow: "hidden" }}>
+    <section
+      id="about"
+      style={{
+        background: "#F7F8FA",
+        overflow: "hidden",
+      }}
+    >
       <div
+        className="about-grid"
         style={{
           maxWidth: 1280,
           margin: "0 auto",
@@ -28,25 +31,23 @@ export default function WhyMTM() {
       >
         {/* Image */}
         <div
-          ref={leftRef}
           style={{
             position: "relative",
             minHeight: 520,
             background: "#0d2b55",
           }}
         >
-          <img
+          <Image
             src="/images/about.webp"
             alt="MTM Roofing crew on a commercial project"
+            fill
+            loading="lazy"
+            decoding="async"
             style={{
-              width: "100%",
-              height: "100%",
               objectFit: "cover",
-              // display: "block",
-              position: "absolute",
-              inset: 0,
             }}
           />
+
           {/* Gold accent bar */}
           <div
             style={{
@@ -58,6 +59,7 @@ export default function WhyMTM() {
               background: "#D4AF37",
             }}
           />
+
           {/* Stats badge */}
           <div
             style={{
@@ -79,6 +81,7 @@ export default function WhyMTM() {
             >
               20+
             </div>
+
             <div
               style={{
                 fontSize: 12,
@@ -97,7 +100,6 @@ export default function WhyMTM() {
 
         {/* Content */}
         <div
-          ref={rightRef}
           style={{
             padding: "clamp(48px, 6vw, 96px) clamp(32px, 5vw, 72px)",
             display: "flex",
@@ -105,7 +107,8 @@ export default function WhyMTM() {
             justifyContent: "center",
           }}
         >
-          <div className="in-view" style={{ marginBottom: 12 }}>
+          {/* Section heading */}
+          <div style={{ marginBottom: 12 }}>
             <div
               style={{
                 display: "flex",
@@ -114,7 +117,14 @@ export default function WhyMTM() {
                 marginBottom: 20,
               }}
             >
-              <div style={{ width: 28, height: 2, background: "#D4AF37" }} />
+              <div
+                style={{
+                  width: 28,
+                  height: 2,
+                  background: "#D4AF37",
+                }}
+              />
+
               <span
                 style={{
                   fontSize: 12,
@@ -127,6 +137,7 @@ export default function WhyMTM() {
                 Why MTM Roofing
               </span>
             </div>
+
             <h2
               style={{
                 fontSize: "clamp(36px, 4vw, 56px)",
@@ -142,6 +153,7 @@ export default function WhyMTM() {
               <br />
               You Can Depend On
             </h2>
+
             <p
               style={{
                 fontSize: 15,
@@ -158,11 +170,17 @@ export default function WhyMTM() {
             </p>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {/* Checks */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+            }}
+          >
             {checks.map((item, i) => (
               <div
                 key={i}
-                className={`in-view in-view-delay-${Math.min(i + 1, 5)}`}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -174,15 +192,13 @@ export default function WhyMTM() {
                   transition: "border-color 0.2s, box-shadow 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor =
-                    "#D4AF37";
-                  (e.currentTarget as HTMLElement).style.boxShadow =
+                  e.currentTarget.style.borderColor = "#D4AF37";
+                  e.currentTarget.style.boxShadow =
                     "0 2px 12px rgba(18,59,114,0.08)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor =
-                    "#E8EAEE";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                  e.currentTarget.style.borderColor = "#E8EAEE";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 <div
@@ -207,6 +223,7 @@ export default function WhyMTM() {
                     />
                   </svg>
                 </div>
+
                 <span
                   style={{
                     fontSize: 14,
@@ -225,8 +242,13 @@ export default function WhyMTM() {
 
       <style>{`
         @media (max-width: 768px) {
-          #about > div { grid-template-columns: 1fr !important; }
-          #about .img-zoom { min-height: 300px !important; }
+          .about-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          .about-grid > div:first-child {
+            min-height: 300px !important;
+          }
         }
       `}</style>
     </section>
