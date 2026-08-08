@@ -32,72 +32,70 @@ const stackSansNotch = localFont({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Rhino Roofing Ltd. | Flat, Metal & Commercial Roofing in Alberta & Saskatchewan",
+  title: "MTM Roofing | Commercial Roofing Services in Alberta",
 
   icons: {
-    icon: "/images/rhinologo.webp",
-    shortcut: "/images/rhinologo.webp",
-    apple: "/images/rhinologo.webp",
+    icon: "/images/mtmroofing.webp",
+    shortcut: "/images/mtmroofing.webp",
+    apple: "/images/mtmroofing.webp",
   },
 
   description:
-    "Rhino Roofing Ltd. delivers premium flat roofing, metal roofing, commercial roofing, residential roofing, roof repairs, inspections, and solar roofing solutions across Alberta and Saskatchewan.",
+    "MTM Roofing provides professional commercial roofing services across Alberta, including flat roofing, metal roofing, roof repairs, preventative maintenance, roof replacement, inspections, and emergency roofing.",
 
   keywords: [
-    "Rhino Roofing Ltd",
-    "Rhino Roofing",
-    "roofing company Alberta",
-    "roofing company Saskatchewan",
+    "MTM Roofing",
+    "MTM Roofing Alberta",
+    "MTM Roofing Edmonton",
+    "commercial roofing Alberta",
+    "commercial roofing Edmonton",
+    "commercial roofing contractor Alberta",
+    "commercial roofing contractor Edmonton",
     "flat roofing Alberta",
+    "flat roofing Edmonton",
     "metal roofing Alberta",
-    "commercial roofing",
-    "residential roofing",
-    "roof repairs",
-    "roof inspections",
-    "solar roofing",
-    "roof replacement",
-    "emergency roofing",
-    "roof restoration",
-    "industrial roofing",
-    "roofing contractor",
-    "Calgary roofing",
-    "Edmonton roofing",
-    "Lloydminster roofing",
-    "Cold Lake roofing",
-    "Bonnyville roofing",
-    "North Battleford roofing",
-    "Vermilion roofing",
-    "St. Paul roofing",
-    "Wainwright roofing",
-    "Provost roofing",
-    "roofing experts Alberta",
+    "metal roofing Edmonton",
+    "commercial roof repair",
+    "commercial roof replacement",
+    "commercial roof maintenance",
+    "preventative roof maintenance",
+    "emergency commercial roofing",
+    "commercial roof inspection",
+    "industrial roofing Alberta",
+    "industrial roofing Edmonton",
+    "warehouse roofing Alberta",
+    "office building roofing Alberta",
+    "retail roofing Alberta",
+    "municipal building roofing Alberta",
+    "commercial roofing services",
+    "commercial roofing company Alberta",
+    "roofing contractor Alberta",
+    "roofing contractor Edmonton",
   ],
 
   authors: [
     {
-      name: "Rhino Roofing Ltd.",
+      name: "MTM Roofing",
     },
   ],
 
-  creator: "Rhino Roofing Ltd.",
-  publisher: "Rhino Roofing Ltd.",
-  applicationName: "Rhino Roofing Ltd.",
+  creator: "MTM Roofing",
+  publisher: "MTM Roofing",
+  applicationName: "MTM Roofing",
 
-  category: "Roofing & Construction",
+  category: "Commercial Roofing & Construction",
 
-  metadataBase: new URL("https://rhinoroofing.ca"),
+  metadataBase: new URL("https://YOUR-MTM-DOMAIN.com"),
 
   openGraph: {
-    title:
-      "Rhino Roofing Ltd. | Alberta & Saskatchewan's Trusted Roofing Specialists",
+    title: "MTM Roofing | Commercial Roofing Services Across Alberta",
 
     description:
-      "Professional flat roofing, metal roofing, commercial roofing, residential roofing, roof repairs, inspections, and solar roofing solutions throughout Alberta and Saskatchewan.",
+      "MTM Roofing delivers dependable commercial roofing solutions across Alberta, including flat roofing, metal roofing, repairs, maintenance, inspections, roof replacement, and emergency roofing.",
 
-    url: "https://rhinoroofing.ca",
+    url: "https://YOUR-MTM-DOMAIN.com",
 
-    siteName: "Rhino Roofing Ltd.",
+    siteName: "MTM Roofing",
 
     locale: "en_CA",
 
@@ -105,10 +103,10 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/images/og-image.webp",
+        url: "/images/hero.webp",
         width: 1200,
         height: 630,
-        alt: "Rhino Roofing Ltd.",
+        alt: "MTM Roofing commercial roofing services in Alberta",
       },
     ],
   },
@@ -116,13 +114,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title:
-      "Rhino Roofing Ltd. | Premium Roofing Services Across Alberta & Saskatchewan",
+    title: "MTM Roofing | Commercial Roofing Services Across Alberta",
 
     description:
-      "Trusted specialists in flat roofing, metal roofing, commercial roofing, residential roofing, repairs, inspections, and solar roofing.",
+      "Professional commercial roofing services including flat roofing, metal roofing, repairs, maintenance, inspections, replacement, and emergency roofing across Alberta.",
 
-    images: ["/images/og-image.webp"],
+    images: ["/images/hero.webp"],
   },
 
   robots: {
